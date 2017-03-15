@@ -29,11 +29,20 @@ before your tests.
 
 ## Using
 
-The following function are provides that wrap the standard `it` and `describe` Jasmine functions.
+jasmine2-focused allows you to specify how many focused functions are provided by setting
 
-  * `fit`
-  * `ffit`
-  * `fffit`
-  * `fdescribe`
-  * `ffdescribe`
-  * `fffdescribe`
+```js
+global.JASMINE2_FOCUSED_HIGHEST_PRIORITY = 3 // 3 is the default
+require("jasmine2-focused");
+```
+
+By default the following function are provides that wrap the standard `it` and `describe` Jasmine functions.
+
+*   `fit`
+*   `fdescribe`
+
+*   `ffit`
+*   `ffdescribe`
+
+*   `fffit`
+*   `fffdescribe`
