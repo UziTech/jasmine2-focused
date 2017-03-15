@@ -1,0 +1,19 @@
+{
+  "name": "jasmine2-focused",
+  "version": "1.0.0",
+  "description": "Add 3 priorities of focus",
+  "repository": "https://github.com/UziTech/jasmine2-focused",
+  "main": "src/jasmine2-focused.js",
+  "scripts": {
+    "test": "jasmine spec/jasmine2-focused-spec.js"
+  },
+  "keywords": [
+    "jasmine",
+    "focused"
+  ],
+  "author": "Tony Brix",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^2.5.3"
+  }
+}
