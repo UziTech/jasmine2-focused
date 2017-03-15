@@ -1,7 +1,7 @@
 {
   "name": "jasmine2-focused",
   "version": "1.0.0",
-  "description": "Add 3 priorities of focus",
+  "description": "Add focus priorities to Jasmine 2.x",
   "repository": "https://github.com/UziTech/jasmine2-focused",
   "main": "src/jasmine2-focused.js",
   "scripts": {
