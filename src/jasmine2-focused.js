@@ -8,6 +8,12 @@
 	var __realIt = global.it;
 	var __realDescribe = global.describe;
 
+	var highestPriority = global.JASMINE2_FOCUSED_HIGHEST_PRIORITY || 3;
+
+	if (isNaN(highestPriority) || highestPriority < 0) {
+		throw new Error("JASMINE2_FOCUSED_HIGHEST_PRIORITY must be >= 0");
+	}
+
 	var focusPriority = 0;
 	var currentSuitePriority = 0;
 	var prioritySpecs = {};
@@ -41,63 +47,35 @@
 		}
 	}
 
-	function createSuite(description, specDefinitions, priority) {
-		var parentSuitePriority = currentSuitePriority;
-		setGlobalFocusPriority(priority);
-		if (priority > currentSuitePriority) {
-			currentSuitePriority = priority;
-		}
-		disableNonPrioritySpecs();
-		var suite = __realDescribe(description, specDefinitions);
-		suite.priority = currentSuitePriority;
-		currentSuitePriority = parentSuitePriority;
-		return suite;
+	function createDescribe(priority) {
+		return function (description, specDefinitions) {
+			var parentSuitePriority = currentSuitePriority;
+			setGlobalFocusPriority(priority);
+			if (priority > currentSuitePriority) {
+				currentSuitePriority = priority;
+			}
+			disableNonPrioritySpecs();
+			var suite = __realDescribe(description, specDefinitions);
+			suite.priority = currentSuitePriority;
+			currentSuitePriority = parentSuitePriority;
+			return suite;
+		};
 	}
 
-	function createSpec(description, specDefinition, timeout, priority) {
-		setGlobalFocusPriority(priority);
-		var spec = __realIt(description, specDefinition, timeout);
-		addPrioritySpec(spec, priority);
-		disableNonPrioritySpecs();
-		return spec;
+	function createIt(priority) {
+		return function (description, specDefinition, timeout) {
+			setGlobalFocusPriority(priority);
+			var spec = __realIt(description, specDefinition, timeout);
+			addPrioritySpec(spec, priority);
+			disableNonPrioritySpecs();
+			return spec;
+		};
 	}
 
-	var focusMethods = {
-		describe: function (description, specDefinitions) {
-			return createSuite(description, specDefinitions, 0);
-		},
-
-		fdescribe: function (description, specDefinitions) {
-			return createSuite(description, specDefinitions, 1);
-		},
-
-		ffdescribe: function (description, specDefinitions) {
-			return createSuite(description, specDefinitions, 2);
-		},
-
-		fffdescribe: function (description, specDefinitions) {
-			return createSuite(description, specDefinitions, 3);
-		},
-
-		it: function (description, specDefinition, timeout) {
-			return createSpec(description, specDefinition, timeout, 0);
-		},
-
-		fit: function (description, specDefinition, timeout) {
-			return createSpec(description, specDefinition, timeout, 1);
-		},
-
-		ffit: function (description, specDefinition, timeout) {
-			return createSpec(description, specDefinition, timeout, 2);
-		},
-
-		fffit: function (description, specDefinition, timeout) {
-			return createSpec(description, specDefinition, timeout, 3);
-		}
-	};
-
-	for (var methodName in focusMethods) {
-		global[methodName] = focusMethods[methodName];
+	for (var i = 0; i <= highestPriority; i++) {
+		var prefix = Array(i + 1).join("f");
+		global[prefix + "it"] = createIt(i);
+		global[prefix + "describe"] = createDescribe(i);
 	}
 
 })(typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
