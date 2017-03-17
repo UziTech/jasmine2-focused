@@ -5,7 +5,8 @@
   "repository": "https://github.com/UziTech/jasmine2-focused",
   "main": "src/jasmine2-focused.js",
   "scripts": {
-    "test": "jasmine spec/jasmine2-focused-spec.js"
+    "test": "jasmine ./spec/*-spec.js",
+    "release": "test-tag-publish"
   },
   "keywords": [
     "jasmine",
@@ -14,6 +15,7 @@
   "author": "Tony Brix",
   "license": "MIT",
   "devDependencies": {
-    "jasmine": "^2.5.3"
+    "jasmine": "^2.5.3",
+    "test-tag-publish": "0.0.7"
   }
 }
