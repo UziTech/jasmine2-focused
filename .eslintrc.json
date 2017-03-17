@@ -7,13 +7,7 @@
 		"atomtest": true
 	},
 	"parserOptions": {
-		"sourceType": "module",
-		"ecmaVersion": 2017,
-		"ecmaFeatures": {
-			"jsx": true,
-			"impliedStrict": true,
-			"experimentalObjectRestSpread": true
-		}
+		"ecmaVersion": 5
 	},
 	"rules": {
 		"semi": 2,

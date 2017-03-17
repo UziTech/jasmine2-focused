@@ -1,4 +1,5 @@
-;
+"use strict";
+
 (function (global) {
 
 	if (!global.jasmine) {
