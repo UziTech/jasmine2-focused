@@ -6,7 +6,10 @@
   "main": "src/jasmine2-focused.js",
   "scripts": {
     "test": "jasmine ./spec/*-spec.js",
-    "release": "test-tag-publish"
+    "release": "test-tag-publish",
+    "release:patch": "test-tag-publish patch",
+    "release:minor": "test-tag-publish minor",
+    "release:major": "test-tag-publish major"
   },
   "keywords": [
     "jasmine",
