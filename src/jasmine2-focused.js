@@ -56,7 +56,16 @@
 				currentSuitePriority = priority;
 			}
 			disableNonPrioritySpecs();
-			var suite = __realDescribe(description, specDefinitions);
+			var suite;
+			switch (arguments.length) {
+				case 1:
+					suite = __realDescribe(description);
+					break;
+				case 2:
+				default:
+					suite = __realDescribe(description, specDefinitions);
+					break;
+			}
 			suite.priority = currentSuitePriority;
 			currentSuitePriority = parentSuitePriority;
 			return suite;
@@ -66,7 +75,19 @@
 	function createIt(priority) {
 		return function (description, specDefinition, timeout) {
 			setGlobalFocusPriority(priority);
-			var spec = __realIt(description, specDefinition, timeout);
+			var spec;
+			switch (arguments.length) {
+				case 1:
+					spec = __realIt(description);
+					break;
+				case 2:
+					spec = __realIt(description, specDefinition);
+					break;
+				case 3:
+				default:
+					spec = __realIt(description, specDefinition, timeout);
+					break;
+			}
 			addPrioritySpec(spec, priority);
 			disableNonPrioritySpecs();
 			return spec;
