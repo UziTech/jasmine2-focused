@@ -27,6 +27,8 @@ describe("jasmine-focused", function () {
 		expect(global.ffffdescribe).toEqual(jasmine.any(Function));
 	});
 
+	it("should allow an 'it' with no function");
+
 	it("should allow timeout as third parameter", function (done) {
 		setTimeout(done, 6000);
 	}, 7000);
