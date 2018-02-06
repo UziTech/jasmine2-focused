@@ -41,7 +41,7 @@
 		for (var i = 0; i < focusPriority; i++) {
 			if (prioritySpecs[i]) {
 				for (var j = 0; j < prioritySpecs[i].length; j++) {
-					prioritySpecs[i][j].disable();
+					prioritySpecs[i][j].pend();
 				}
 				delete prioritySpecs[i];
 			}
