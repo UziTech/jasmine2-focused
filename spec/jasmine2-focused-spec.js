@@ -11,7 +11,7 @@ describe("jasmine-focused", function () {
 		expect(global.fffit).toEqual(jasmine.any(Function));
 	});
 
-	it("should define fffdescribe", function () {
+	it("should define ffffit", function () {
 		expect(global.ffffit).toEqual(jasmine.any(Function));
 	});
 
@@ -23,7 +23,7 @@ describe("jasmine-focused", function () {
 		expect(global.fffdescribe).toEqual(jasmine.any(Function));
 	});
 
-	it("should define fffdescribe", function () {
+	it("should define ffffdescribe", function () {
 		expect(global.ffffdescribe).toEqual(jasmine.any(Function));
 	});
 
