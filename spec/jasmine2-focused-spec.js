@@ -1,6 +1,9 @@
+"use strict";
 
 global.JASMINE2_FOCUSED_HIGHEST_PRIORITY = 4;
 require("../src/jasmine2-focused");
+
+var ran = jasmine.createSpy();
 
 describe("jasmine-focused", function () {
 	it("should define ffit", function () {
@@ -30,6 +33,13 @@ describe("jasmine-focused", function () {
 	it("should allow an 'it' with no function");
 
 	it("should allow timeout as third parameter", function (done) {
-		setTimeout(done, 6000);
+		setTimeout(function () {
+			ran();
+			done();
+		}, 6000);
 	}, 7000);
+
+	it("should run async tests", function () {
+		expect(ran).toHaveBeenCalledTimes(1);
+	});
 });

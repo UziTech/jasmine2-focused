@@ -6,8 +6,8 @@
 		throw new Error("jasmine must be loaded before jasmine2-focused");
 	}
 
-	var __realIt = global.it;
-	var __realDescribe = global.describe;
+	var originalIt = global.it;
+	var originalDescribe = global.describe;
 
 	var highestPriority = global.JASMINE2_FOCUSED_HIGHEST_PRIORITY || 3;
 
@@ -41,7 +41,10 @@
 		for (var i = 0; i < focusPriority; i++) {
 			if (prioritySpecs[i]) {
 				for (var j = 0; j < prioritySpecs[i].length; j++) {
-					prioritySpecs[i][j].pend();
+					var spec = prioritySpecs[i][j];
+					if (!spec.markedPending) {
+						spec.pend("Not focused");
+					}
 				}
 				delete prioritySpecs[i];
 			}
@@ -49,23 +52,14 @@
 	}
 
 	function createDescribe(priority) {
-		return function (description, specDefinitions) {
+		return function () {
 			var parentSuitePriority = currentSuitePriority;
 			setGlobalFocusPriority(priority);
 			if (priority > currentSuitePriority) {
 				currentSuitePriority = priority;
 			}
 			disableNonPrioritySpecs();
-			var suite;
-			switch (arguments.length) {
-				case 1:
-					suite = __realDescribe(description);
-					break;
-				case 2:
-				default:
-					suite = __realDescribe(description, specDefinitions);
-					break;
-			}
+			var suite = originalDescribe.apply(this, arguments);
 			suite.priority = currentSuitePriority;
 			currentSuitePriority = parentSuitePriority;
 			return suite;
@@ -73,21 +67,9 @@
 	}
 
 	function createIt(priority) {
-		return function (description, specDefinition, timeout) {
+		return function () {
 			setGlobalFocusPriority(priority);
-			var spec;
-			switch (arguments.length) {
-				case 1:
-					spec = __realIt(description);
-					break;
-				case 2:
-					spec = __realIt(description, specDefinition);
-					break;
-				case 3:
-				default:
-					spec = __realIt(description, specDefinition, timeout);
-					break;
-			}
+			var spec = originalIt.apply(this, arguments);
 			addPrioritySpec(spec, priority);
 			disableNonPrioritySpecs();
 			return spec;

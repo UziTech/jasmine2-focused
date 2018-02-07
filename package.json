@@ -19,9 +19,9 @@
   "license": "MIT",
   "devDependencies": {
     "jasmine": "^3.0.0",
-    "test-tag-publish": "^2.0.0"
+    "test-tag-publish": "*"
   },
   "peerDependencies": {
-    "jasmine": "3.x"
+    "jasmine": ">=2 <4"
   }
 }
