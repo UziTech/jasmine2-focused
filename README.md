@@ -1,11 +1,11 @@
 [![Build Status](https://travis-ci.org/UziTech/jasmine2-focused.png)](https://travis-ci.org/UziTech/jasmine2-focused)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/hw8plj2yq94aqahq?svg=true)](https://ci.appveyor.com/project/UziTech/jasmine2-focused)
 
-# Jasmine 2.x Focused
+# Jasmine 2.x-3.x Focused
 
-This is similar to [jasmine-focused](https://github.com/atom/jasmine-focused) except it is for Jasmine 2.x
+This is similar to [jasmine-focused](https://github.com/atom/jasmine-focused) except it works with Jasmine 2.x or 3.x
 
-Adds global functions to run only certain [Jasmine](https://github.com/pivotal/jasmine) specs.
+Adds global functions to run only certain [Jasmine](https://github.com/jasmin/jasmine) specs.
 
 The number of `f` characters in the method name denotes the priority of the `describe` or `it` spec.
 
