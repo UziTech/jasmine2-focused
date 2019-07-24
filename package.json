@@ -6,10 +6,8 @@
   "main": "src/jasmine2-focused.js",
   "scripts": {
     "test": "jasmine ./spec/*-spec.js",
-    "release": "test-tag-publish",
-    "release:patch": "test-tag-publish patch",
-    "release:minor": "test-tag-publish minor",
-    "release:major": "test-tag-publish major"
+    "lint": "eslint .",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "jasmine",
@@ -18,8 +16,15 @@
   "author": "Tony Brix",
   "license": "MIT",
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/commit-analyzer": "^6.2.0",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/github": "^5.4.2",
+    "@semantic-release/npm": "^5.1.13",
+    "@semantic-release/release-notes-generator": "^7.2.1",
+    "eslint": "^6.1.0",
     "jasmine": "^3.4.0",
-    "test-tag-publish": "*"
+    "semantic-release": "^15.13.18"
   },
   "peerDependencies": {
     "jasmine": ">=2 <4"
