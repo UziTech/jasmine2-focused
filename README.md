@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/UziTech/jasmine2-focused.png)](https://travis-ci.org/UziTech/jasmine2-focused)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/hw8plj2yq94aqahq?svg=true)](https://ci.appveyor.com/project/UziTech/jasmine2-focused)
+[![Build Status](https://travis-ci.org/UziTech/jasmine2-focused.svg?branch=master)](https://travis-ci.org/UziTech/jasmine2-focused)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/hw8plj2yq94aqahq/branch/master?svg=true)](https://ci.appveyor.com/project/UziTech/jasmine2-focused)
 
 # Jasmine 2.x-3.x Focused
 
