@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/UziTech/jasmine2-focused.svg?branch=master)](https://travis-ci.org/UziTech/jasmine2-focused)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/hw8plj2yq94aqahq/branch/master?svg=true)](https://ci.appveyor.com/project/UziTech/jasmine2-focused)
+[![Actions Status](https://github.com/UziTech/jasmine2-focused/workflows/CI/badge.svg)](https://github.com/UziTech/jasmine2-focused/actions)
 
 # Jasmine 2.x-3.x Focused
 
